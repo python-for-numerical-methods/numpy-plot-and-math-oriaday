@@ -16,9 +16,15 @@ def normalized_array(data):
     # המרת הקלט ל-numpy array לצורך חישובים וקטוריים
     data = np.array(data)
     
-    # --- כיתבו את הקוד שלכם כאן ---
-    pass
-    # חשוב לזכור להחליף את pass ב- return
+    data_min = np.min(data)
+    data_max = np.max(data)
+    
+    # בדיקה אם כל הערכים זהים (מניעת חלוקה באפס)
+    if data_min == data_max:
+        return np.zeros_like(data)
+        
+    # ביצוע הנרמול באמצעות פעולות וקטוריות
+    return (data - data_min) / (data_max - data_min)
 
 if __name__ == "__main__":
     # כאן הסטודנטים יכולים להריץ בדיקה עצמית מהירה
