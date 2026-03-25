@@ -13,6 +13,7 @@ def normalized_array(data):
     מחזירה:
     np.array: מערך מנורמל. אם כל הערכים במערך זהים, יש להחזיר מערך של אפסים.
     """
+    data = np.array(data)
     data_min = np.min(data)
     data_max = np.max(data)
     
