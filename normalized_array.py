@@ -13,19 +13,19 @@ def normalized_array(data):
     מחזירה:
     np.array: מערך מנורמל. אם כל הערכים במערך זהים, יש להחזיר מערך של אפסים.
     """
-    # המרת הקלט ל-numpy array לצורך חישובים וקטוריים
-    data = np.array(data)
-    
     data_min = np.min(data)
     data_max = np.max(data)
     
-    # בדיקה אם כל הערכים זהים (מניעת חלוקה באפס)
+    # בדיקה האם כל הערכים זהים (מניעת חלוקה באפס)
     if data_min == data_max:
-        return np.zeros_like(data)
+        # יצירת מערך אפסים באותו גודל, מסוג float
+        new_array = np.zeros_like(data, dtype=float)
+    else:
+        # נרמול וקטורי של כל איברי המערך ללא לולאות
+        new_array = (data - data_min) / (data_max - data_min)
         
-    # ביצוע הנרמול באמצעות פעולות וקטוריות
-    return (data - data_min) / (data_max - data_min)
-
+    return new_array
+    
 if __name__ == "__main__":
     # כאן הסטודנטים יכולים להריץ בדיקה עצמית מהירה
     test_data = [10, 20, 30, 40, 50]
